@@ -26,7 +26,6 @@ fi
 
 # git pull origin master
 updateVersion
-exit 1
 build || exit 2
 
 git status | grep 'nothing to commit'
