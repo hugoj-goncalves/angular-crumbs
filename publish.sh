@@ -6,10 +6,11 @@ function build {
 
 function updateVersion {
     echo "New version change: $newVersion"
-    oldVersionValue=$(cat package-dist.json | grep version | grep -oP "\d+[^\"]+")
+    oldVersionValue=$(cat package.json | grep version | grep -oP "\d+[^\"]+")
     npm version "$newVersion"
-    newVersionValue=$(cat package-dist.json | grep version | grep -oP "\d+[^\"]+")
+    newVersionValue=$(cat package.json | grep version | grep -oP "\d+[^\"]+")
     echo "New version value: $newVersionValue - from $oldVersionValue"
+	sed -i.bak -r "s/\"version\":\s+\"[^\"]*\"/\"version\": \"$newVersionValue\"/" package-dist.json
 }
 
 newVersion="$1"
@@ -25,6 +26,7 @@ fi
 
 # git pull origin master
 updateVersion
+exit 1
 build || exit 2
 
 git status | grep 'nothing to commit'
