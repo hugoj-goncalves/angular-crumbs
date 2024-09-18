@@ -1,6 +1,6 @@
 {
     "name": "@eklesia/angular-crumbs",
-    "version": "3.0.1-eklesia18.2",
+    "version": "3.0.1-eklesia18.3",
     "description": "A route-based Angular breadcrumb component and service. Allows breadcrumb descriptions to be set based on route data, or as the result of an API call.",
     "main": "bundles/angular-crumbs.umd.min.js",
     "module": "index.js",
